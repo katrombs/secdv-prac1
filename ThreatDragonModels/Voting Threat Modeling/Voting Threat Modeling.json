@@ -136,25 +136,25 @@
               "threats": [
                 {
                   "id": "edb93cac-dcf5-474e-9be7-f31d32d670b6",
-                  "title": "DDoS Attack",
+                  "title": "Voting application unable to process the votes due to unavailability",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Rate Limiting",
+                  "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') can lead to a Dos.\n",
+                  "mitigation": "Implement proper data/input validation",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
-                  "score": ""
+                  "score": "476"
                 },
                 {
                   "id": "9e44e673-8500-40e4-9d3f-20ec9d37e0d2",
-                  "title": "Premature termination of the online voting process",
+                  "title": "Allocation of Resources Without Limits or Throttling",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "The software allocates a reusable resource or group of resources on behalf of\nan actor without imposing any restrictions on the size or number of resources\nthat can be allocated, in violation of the intended security policy for that actor.",
+                  "mitigation": "- Rate Limiting\n- Autoscaling",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 2,
@@ -226,52 +226,65 @@
                   "score": ""
                 },
                 {
-                  "id": "e35738f6-a747-4202-afc1-cb5250aa100e",
-                  "title": "SQL Injection",
+                  "id": "a3c124fb-e4ca-4cd3-8273-6e7273176011",
+                  "title": "Casting of multiple votes by the same user",
                   "status": "Open",
-                  "severity": "High",
-                  "type": "Tampering",
-                  "description": "SQL injections are made through the client-side app, whose inputs are sent to the web application. ",
-                  "mitigation": "Input validation \n",
+                  "severity": "TBD",
+                  "type": "Repudiation",
+                  "description": "Caused by imrpoper input validation",
+                  "mitigation": "- Implement logic to ensure only one vote per user can be made\n- Ensure that logs are checked when a vote is made, to double check that there is no duplicate vote",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 11,
+                  "number": 16,
                   "score": ""
                 },
                 {
-                  "id": "9f20a0d0-c369-4c80-b7f1-10c0a55256c5",
-                  "title": "Cleartext Transmission of Sensitive Information ",
+                  "id": "7f76e74e-141e-4058-a69f-0eebe4044ec2",
+                  "title": "Modifying the candidates’ information participating in the election",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "An attacker can modify a user’s vote and see unencrypted data in transit",
-                  "mitigation": "Enforce HTTPS at the server-level by only accepting HTTPS requests\nSet HSTS headers\nEnsure that the “Secure”  flag is set to true for all sensitive cookies",
+                  "description": "Caused by: \n- Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')\n- Relative path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting')\n- Improper Input Validation",
+                  "mitigation": "Path traversal/ Relative path traversal: \n- Implement proper data/input validation\nXSS: \n- Input validation, for imported CSV’s\n- Implement strong CPS (Content security policy) to block scripts from communicating with an external server\nImproper input validation: \n- Implement proper data/input validation in the admin side.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 12,
-                  "score": "114.4a"
+                  "number": 17,
+                  "score": ""
                 },
                 {
-                  "id": "d9932638-40f8-440d-ac29-8dad0f56fb8b",
-                  "title": "Cross site scripting (XSS) (SCRIPT INJECTION)",
+                  "id": "715617a0-3ecf-4fdf-ae69-9570839091f6",
+                  "title": "Modifying the results of the election",
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "malicious scripts are injected into the browser client, to be processed by the web app ",
-                  "mitigation": "- Input validation- encode output, especially special characters to prevent being read as code\n- Implement strong CPS (Content security policy) to block scripts from communicating with an external server",
+                  "description": "Caused by: \n- Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')\n- Relative path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting')\n- Improper Input Validation",
+                  "mitigation": "Path traversal/ Relative path traversal: \n- Implement proper data/input validation\nXSS: \n- Input validation, for imported CSV’s\n-  Implement strong CPS (Content security policy) to block scripts from communicating with an external server\nImproper input validation: \n- Implement proper data/input validation in the admin side.",
                   "modelType": "STRIDE",
                   "new": false,
-                  "number": 13,
-                  "score": "268.8"
+                  "number": 19,
+                  "score": ""
+                },
+                {
+                  "id": "e184bf26-ec09-4528-94f3-60255a5fa35f",
+                  "title": "Exposure of election information to unauthorized parties",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection'\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting') (XSS)\n- Path traversal/ Relative Path traversal",
+                  "mitigation": "SQL Injection: \n- Input validation\n- Apply principle of least privilege\nXSS: \n- Disable inline JavaScript execution\nPath traversal/ Relative Path traversal:\n- Implement proper data/input validation for file paths\n- Whitelist certain file paths",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 22,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
-                "spoofing": 0,
-                "tampering": 6,
-                "repudiation": 0,
+                "spoofing": 2,
+                "tampering": 12,
+                "repudiation": 4,
                 "informationDisclosure": 3,
-                "denialOfService": 3,
-                "elevationOfPrivilege": 0
+                "denialOfService": 6,
+                "elevationOfPrivilege": 1
               }
             }
           },
@@ -563,11 +576,13 @@
                 "text": "MongoDB"
               },
               "topLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               },
               "bottomLine": {
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -663,13 +678,59 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "isALog": false,
               "isEncrypted": false,
               "isSigned": false,
               "storesCredentials": false,
               "storesInventory": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "2d82cced-1abe-447f-979d-f4c19e7828c2",
+                  "title": "Modifying the candidates’ information participating in the election",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Tampering",
+                  "description": "Relevant vulnerabilities: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection')\n- Path traversal/Relative path traversal ",
+                  "mitigation": "SQL Injection: \n-Query parameterization\nPath traversal/Relative path traversal: \n- Implement proper data/input validation",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 18,
+                  "score": ""
+                },
+                {
+                  "id": "e29aaec5-0461-40cc-b92e-d76cc75971af",
+                  "title": "Leakage of voters’ personally identifiable information",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Caused by: \n- Path Traversal/Relative Path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting') (XSS)",
+                  "mitigation": "Path Traversal/Relative Path traversal: \n- Input validation\n\nXSS: \n- Encode output, especially special characters to prevent being read as code\n- Implement strong Content security policy (CPS) to block scripts from communicating with an external server",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 20,
+                  "score": ""
+                },
+                {
+                  "id": "02540c19-19cd-417a-9384-6828a90acd61",
+                  "title": "Exposure of election information to unauthorized parties",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Information disclosure",
+                  "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection')",
+                  "mitigation": "SQL injection:\n- Query parameterization",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 21,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "tampering": 2,
+                "repudiation": 1,
+                "informationDisclosure": 2,
+                "denialOfService": 0
+              }
             }
           },
           {
@@ -1494,6 +1555,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 13
+    "threatTop": 22
   }
 }
