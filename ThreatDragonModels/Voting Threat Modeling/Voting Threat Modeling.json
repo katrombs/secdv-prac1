@@ -140,8 +140,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') can lead to a Dos.\n",
-                  "mitigation": "Implement proper data/input validation",
+                  "description": "- Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal') can lead to a Dos.\n- Uncontrolled Resource Consumption\n",
+                  "mitigation": "- Implement proper data/input validation",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 1,
@@ -179,8 +179,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "Caused by:\n- Out-of-bounds Write",
-                  "mitigation": "- Implement proper data/input validation\n- Use Memory-Safe Languages",
+                  "description": "Caused by:\n- Out-of-bounds Write\n- Unrestricted Upload of File with Dangerous Type",
+                  "mitigation": "Out-of-bounds Write:\n- Implement proper data/input validation\n- Use Memory-Safe Languages\nUnrestricted Upload of File with Dangerous Type:\n- Whitelist Allowed File Types",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 4,
@@ -270,8 +270,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Spoofing",
-                  "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection'\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting') (XSS)\n- Path traversal/ Relative Path traversal",
-                  "mitigation": "SQL Injection: \n- Input validation\n- Apply principle of least privilege\nXSS: \n- Disable inline JavaScript execution\nPath traversal/ Relative Path traversal:\n- Implement proper data/input validation for file paths\n- Whitelist certain file paths",
+                  "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection'\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting') (XSS)\n- Path traversal/ Relative Path traversal\n- Cleartext Transmission of Sensitive Information ",
+                  "mitigation": "SQL Injection: \n- Input validation\n- Apply principle of least privilege\nXSS: \n- Disable inline JavaScript execution\nPath traversal/ Relative Path traversal:\n- Implement proper data/input validation for file paths\n- Whitelist certain file paths\nCleartext Transmission of Sensitive Information :\n- Enforce HTTPS connections & requests",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 22,
@@ -283,8 +283,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "Caused by:\n- Allocation of Resources Without Limits or Throttling\n",
-                  "mitigation": "- Rate Limiting\n- Autoscaling",
+                  "description": "Caused by:\n- Allocation of Resources Without Limits or Throttling\n- Uncontrolled Resource Consumption\n- Missing Release of Memory after Effective Lifetime",
+                  "mitigation": "Allocation of Resources Without Limits or Throttling:\n- Rate Limiting\n- Autoscaling\nUncontrolled Resource Consumption:\n- Input Validation\nMissing Release of Memory after Effective Lifetime:\n- Garbage Collection Monitoring",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 23,
@@ -292,11 +292,11 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 2,
-                "tampering": 17,
+                "spoofing": 4,
+                "tampering": 24,
                 "repudiation": 7,
-                "informationDisclosure": 3,
-                "denialOfService": 8,
+                "informationDisclosure": 6,
+                "denialOfService": 17,
                 "elevationOfPrivilege": 1
               }
             }
@@ -570,9 +570,9 @@
                   "title": "Obtaining the encryption keys that are hardcoded",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Information disclosure",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "type": "Spoofing",
+                  "description": "- Insufficiently Protected Credentials\n- Insertion of Sensitive Information Into Log File",
+                  "mitigation": "Insufficiently Protected Credentials:\n- Use of Secret Management Tools\nInsertion of Sensitive Information Into Log File\n- Mask Information in Logs and Use Generic Responses",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 9,
@@ -580,10 +580,10 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 1,
+                "spoofing": 8,
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 1,
+                "informationDisclosure": 3,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
@@ -731,8 +731,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "Caused by: \n- Path Traversal/Relative Path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting') (XSS)",
-                  "mitigation": "Path Traversal/Relative Path traversal: \n- Input validation\n\nXSS: \n- Encode output, especially special characters to prevent being read as code\n- Implement strong Content security policy (CPS) to block scripts from communicating with an external server",
+                  "description": "Caused by: \n- Path Traversal/Relative Path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting') (XSS)\n- Cleartext Transmission of Sensitive Information",
+                  "mitigation": "Path Traversal/Relative Path traversal: \n- Input validation\n\nXSS: \n- Encode output, especially special characters to prevent being read as code\n- Implement strong Content security policy (CPS) to block scripts from communicating with an external server\n\nCleartext Transmission of Sensitive Information:\n- Enforce HTTPS connections & requests",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 20,
@@ -744,8 +744,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection')\n- Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
-                  "mitigation": "SQL injection:\n- Query parameterization\n- Enforce HTTPS sitewide",
+                  "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection')\n- Sensitive Cookie in HTTPS Session Without 'Secure' Attribute\n- Cleartext Transmission of Sensitive Information",
+                  "mitigation": "SQL injection:\n- Query parameterization\n- Enforce HTTPS sitewide\n\nCleartext Transmission of Sensitive Information:\n- Enforce HTTPS Connections & Requests ",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 21,
@@ -753,18 +753,11 @@
                 }
               ],
               "threatFrequency": {
-                "tampering": 2,
+                "tampering": 3,
                 "repudiation": 1,
-                "informationDisclosure": 4,
+                "informationDisclosure": 11,
                 "denialOfService": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
