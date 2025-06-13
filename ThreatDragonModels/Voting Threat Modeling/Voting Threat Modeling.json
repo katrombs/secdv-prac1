@@ -296,7 +296,7 @@
                 "tampering": 24,
                 "repudiation": 7,
                 "informationDisclosure": 6,
-                "denialOfService": 17,
+                "denialOfService": 18,
                 "elevationOfPrivilege": 1
               }
             }
@@ -570,7 +570,7 @@
                   "title": "Obtaining the encryption keys that are hardcoded",
                   "status": "Open",
                   "severity": "TBD",
-                  "type": "Spoofing",
+                  "type": "Information disclosure",
                   "description": "- Insufficiently Protected Credentials\n- Insertion of Sensitive Information Into Log File",
                   "mitigation": "Insufficiently Protected Credentials:\n- Use of Secret Management Tools\nInsertion of Sensitive Information Into Log File\n- Mask Information in Logs and Use Generic Responses",
                   "modelType": "STRIDE",
@@ -580,10 +580,10 @@
                 }
               ],
               "threatFrequency": {
-                "spoofing": 8,
+                "spoofing": 10,
                 "tampering": 0,
                 "repudiation": 0,
-                "informationDisclosure": 3,
+                "informationDisclosure": 5,
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
@@ -745,7 +745,7 @@
                   "severity": "TBD",
                   "type": "Information disclosure",
                   "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection')\n- Sensitive Cookie in HTTPS Session Without 'Secure' Attribute\n- Cleartext Transmission of Sensitive Information",
-                  "mitigation": "SQL injection:\n- Query parameterization\n- Enforce HTTPS sitewide\n\nCleartext Transmission of Sensitive Information:\n- Enforce HTTPS Connections & Requests ",
+                  "mitigation": "SQL injection:\n- Query parameterization\n- Enforce HTTPS sitewide\nCleartext Transmission of Sensitive Information:\n- Enforce HTTPS Connections & Requests ",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 21,
@@ -755,7 +755,7 @@
               "threatFrequency": {
                 "tampering": 3,
                 "repudiation": 1,
-                "informationDisclosure": 11,
+                "informationDisclosure": 12,
                 "denialOfService": 0
               }
             }
