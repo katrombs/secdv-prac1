@@ -258,28 +258,21 @@
                   "severity": "TBD",
                   "type": "Tampering",
                   "description": "malicious scripts are injected into the browser client, to be processed by the web app ",
-                  "mitigation": "Input validation \nCPS ",
+                  "mitigation": "- Input validation- encode output, especially special characters to prevent being read as code\n- Implement strong CPS (Content security policy) to block scripts from communicating with an external server",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 13,
-                  "score": ""
+                  "score": "268.8"
                 }
               ],
               "threatFrequency": {
                 "spoofing": 0,
-                "tampering": 5,
+                "tampering": 6,
                 "repudiation": 0,
                 "informationDisclosure": 3,
                 "denialOfService": 3,
                 "elevationOfPrivilege": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
