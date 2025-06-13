@@ -166,8 +166,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Denial of service",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Autoscaling the web application so resources are allocated to where there is heavy traffic",
+                  "description": "Caused by:\n- Allocation of Resources Without Limits or Throttling",
+                  "mitigation": "- Autoscaling the web application so resources are allocated to where there is heavy traffic\n- Rate Limiting",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 3,
@@ -179,8 +179,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "Provide a description for this threat",
-                  "mitigation": "Provide remediation for this threat or a reason if status is N/A",
+                  "description": "Caused by:\n- Out-of-bounds Write",
+                  "mitigation": "- Implement proper data/input validation\n- Use Memory-Safe Languages",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 4,
@@ -231,8 +231,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Repudiation",
-                  "description": "Caused by imrpoper input validation",
-                  "mitigation": "- Implement logic to ensure only one vote per user can be made\n- Ensure that logs are checked when a vote is made, to double check that there is no duplicate vote",
+                  "description": "Caused by:\n- Improper input validation\n- Missing Authorization\n- Incorrect Authorization\n- Insufficient session expiration",
+                  "mitigation": "- Implement logic to ensure only one vote per user can be made\n- Ensure that logs are checked when a vote is made, to double check that there is no duplicate vote\n- Make sure that access control mechanism is enforced correctly at server side on every page, users should not be able to access unauthorized functionalities by simply requesting access to the page\n- Allow user to vote only once\n- Use tokens that have a short life",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 16,
@@ -244,8 +244,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "Caused by: \n- Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')\n- Relative path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting')\n- Improper Input Validation",
-                  "mitigation": "Path traversal/ Relative path traversal: \n- Implement proper data/input validation\nXSS: \n- Input validation, for imported CSV’s\n- Implement strong CPS (Content security policy) to block scripts from communicating with an external server\nImproper input validation: \n- Implement proper data/input validation in the admin side.",
+                  "description": "Caused by: \n- Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')\n- Relative path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting')\n- Improper Input Validation\n- Incorrect Permission Assignment for Critical Resource\n- Out-of-bounds Write",
+                  "mitigation": "Path traversal/ Relative path traversal: \n- Implement proper data/input validation\nXSS: \n- Input validation, for imported CSV’s\n- Implement strong CPS (Content security policy) to block scripts from communicating with an external server\nImproper input validation: \n- Implement proper data/input validation in the admin side.\n- Use Memory-Safe Languages\n- Apply Least Privilege",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 17,
@@ -257,8 +257,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Tampering",
-                  "description": "Caused by: \n- Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')\n- Relative path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting')\n- Improper Input Validation",
-                  "mitigation": "Path traversal/ Relative path traversal: \n- Implement proper data/input validation\nXSS: \n- Input validation, for imported CSV’s\n-  Implement strong CPS (Content security policy) to block scripts from communicating with an external server\nImproper input validation: \n- Implement proper data/input validation in the admin side.",
+                  "description": "Caused by: \n- Improper Limitation of a Pathname to a Restricted Directory ('Path Traversal')\n- Relative path traversal\n- Improper Neutralization of  Input During Web Page  Generation ('Cross-site  Scripting')\n- Improper Input Validation\n- Out-of-bounds Write\n- Missing Authorization\n",
+                  "mitigation": "Path traversal/ Relative path traversal: \n- Implement proper data/input validation\nXSS: \n- Input validation, for imported CSV’s\n-  Implement strong CPS (Content security policy) to block scripts from communicating with an external server\nImproper input validation: \n- Implement proper data/input validation in the admin side.\n- Use Memory-Safe Languages\n- Require multi-sig approvals",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 19,
@@ -276,14 +276,27 @@
                   "new": false,
                   "number": 22,
                   "score": ""
+                },
+                {
+                  "id": "f49a2c46-e58b-48fb-90f1-d39e2ef940fd",
+                  "title": "Premature termination of the online voting process",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Denial of service",
+                  "description": "Caused by:\n- Allocation of Resources Without Limits or Throttling\n",
+                  "mitigation": "- Rate Limiting\n- Autoscaling",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 23,
+                  "score": ""
                 }
               ],
               "threatFrequency": {
                 "spoofing": 2,
-                "tampering": 12,
-                "repudiation": 4,
+                "tampering": 17,
+                "repudiation": 7,
                 "informationDisclosure": 3,
-                "denialOfService": 6,
+                "denialOfService": 8,
                 "elevationOfPrivilege": 1
               }
             }
@@ -302,8 +315,8 @@
                 "text": "Client Web\nBrowser"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -399,11 +412,25 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": [],
+              "threats": [
+                {
+                  "id": "ac37afe6-25ab-46f3-92d4-da387acc2c17",
+                  "title": "Casting of vote by an attacker using a legitimate voter’s account",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Caused by:\n- Insufficient session expiration\n",
+                  "mitigation": "- Set expirations on session cookies",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 24,
+                  "score": ""
+                }
+              ],
               "threatFrequency": {
-                "spoofing": 0,
+                "spoofing": 1,
                 "repudiation": 0
               }
             }
@@ -717,8 +744,8 @@
                   "status": "Open",
                   "severity": "TBD",
                   "type": "Information disclosure",
-                  "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection')",
-                  "mitigation": "SQL injection:\n- Query parameterization",
+                  "description": "Caused by: \n- Improper Neutralization of  Special Elements used in an  SQL Command ('SQL  Injection')\n- Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
+                  "mitigation": "SQL injection:\n- Query parameterization\n- Enforce HTTPS sitewide",
                   "modelType": "STRIDE",
                   "new": false,
                   "number": 21,
@@ -728,9 +755,16 @@
               "threatFrequency": {
                 "tampering": 2,
                 "repudiation": 1,
-                "informationDisclosure": 2,
+                "informationDisclosure": 4,
                 "denialOfService": 0
               }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -1555,6 +1589,6 @@
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 22
+    "threatTop": 24
   }
 }
