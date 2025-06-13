@@ -250,8 +250,8 @@
                 "text": "Client Web\nBrowser"
               },
               "body": {
-                "stroke": "#333333",
-                "strokeWidth": 1.5,
+                "stroke": "red",
+                "strokeWidth": 2.5,
                 "strokeDasharray": null
               }
             },
@@ -347,9 +347,34 @@
               "description": "",
               "outOfScope": false,
               "reasonOutOfScope": "",
-              "hasOpenThreats": false,
+              "hasOpenThreats": true,
               "providesAuthentication": false,
-              "threats": []
+              "threats": [
+                {
+                  "id": "1c7877a5-e1db-441a-bee3-5bbcf0a221bb",
+                  "title": "SQL Injection",
+                  "status": "Open",
+                  "severity": "TBD",
+                  "type": "Spoofing",
+                  "description": "Provide a description for this threat",
+                  "mitigation": "1.) Input Mitigation\n2.) ",
+                  "modelType": "STRIDE",
+                  "new": false,
+                  "number": 10,
+                  "score": ""
+                }
+              ],
+              "threatFrequency": {
+                "spoofing": 1,
+                "repudiation": 0
+              }
+            },
+            "tools": {
+              "items": [
+                "boundary",
+                "button-remove"
+              ],
+              "name": null
             }
           },
           {
@@ -504,13 +529,6 @@
                 "denialOfService": 0,
                 "elevationOfPrivilege": 0
               }
-            },
-            "tools": {
-              "items": [
-                "boundary",
-                "button-remove"
-              ],
-              "name": null
             }
           },
           {
@@ -1304,7 +1322,11 @@
             },
             "vertices": [
               {
-                "x": 460,
+                "x": 520,
+                "y": 170
+              },
+              {
+                "x": 380,
                 "y": 170
               }
             ]
@@ -1368,16 +1390,92 @@
             },
             "vertices": [
               {
+                "x": 560,
+                "y": -90
+              },
+              {
                 "x": 600,
                 "y": 100
               }
             ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "zIndex": 10,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Trust Boundary"
+            ],
+            "id": "c0734bcc-ae1d-4584-a930-f3df089f2e2b",
+            "source": {
+              "x": 420,
+              "y": -80
+            },
+            "target": {
+              "x": 1100,
+              "y": -80
+            },
+            "vertices": [
+              {
+                "x": 740,
+                "y": -60
+              },
+              {
+                "x": 880,
+                "y": -60
+              }
+            ]
+          },
+          {
+            "shape": "trust-boundary-curve",
+            "width": 200,
+            "height": 100,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Boundary",
+              "name": "Trust Boundary",
+              "description": "",
+              "isTrustBoundary": true,
+              "hasOpenThreats": false
+            },
+            "labels": [
+              "Trust Boundary"
+            ],
+            "id": "061f7212-f5b5-49a5-953d-0675c9171bb0",
+            "source": {
+              "x": 420,
+              "y": 310
+            },
+            "target": {
+              "x": 1050,
+              "y": 300
+            },
+            "vertices": [
+              {
+                "x": 672,
+                "y": 252
+              },
+              {
+                "x": 940,
+                "y": 252
+              }
+            ],
+            "zIndex": 11
           }
         ]
       }
     ],
     "diagramTop": 1,
     "reviewer": "",
-    "threatTop": 9
+    "threatTop": 10
   }
 }
